@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="container my-5">
+    <div class="Card">
+        <div class="row">
+            <aside class="col-sm-6 border-right">
+                <article class="gallery-warp">
+                    <div class="img-big-wrap">
+                        <a href="#"><img src="/media/{{object.mainimage}}" style="width: 300px;size: 0dvb;" alt="" ></a>
+
+                    </div>
+                </article>
+            </aside>
+            <aside class="col-md-4"></aside>
+            <article class="cart-body p-5">
+                <h3 class="title mp-3">{{object.name}}</h3>
+                <p class="price-deails-wrap">
+                    <span class="price h3 text-warning">
+                        <span>{{object.price}}</span>
+                    </span>
+                </p>
+                <dl class="item-proprty"></dl>
+                <dt>Description</dt>
+                <dd>
+                <p>{{object.details_text}}</p>
+            </dd>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SC0FvzRABtW4qF1hs4dj8pGwqR7tdbK9vLqCq5l5xjvaKpmaLw9s62s8P9MUUqZO" crossorigin="anonymous">
+
+            <form method="post" action="{% url 'App_Order:add' pk=object.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-lg btn-outline-primary text-warning">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                </button>
+            </form>
+            
+
+            </article>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

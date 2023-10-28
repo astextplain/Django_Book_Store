@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}<h1>Product</h1> {% endblock %}
+{% block body_block %}
+<div class="container my-5">
+    <h2 class="my-5">Featured Products</h2>
+    <div class="row">
+        {% for product in object_list %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            
+            <div class="product-item">
+                <figure>
+                    <div class="product-image">
+                        <img src="/media/{{product.mainimage}}"width="200" height="200" class="img-fluid" alt="{{product.name}}" >
+                    </div>
+                    <figcaption>
+                        <h6><a href="{% url 'App_Shop:product_detail' pk=product.pk %}">{{product.name}}</a></h6>
+                        <h6>{{product.category}}</h6>
+                        <span>Rs {{product.price}}</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
